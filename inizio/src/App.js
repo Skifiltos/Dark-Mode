@@ -6,7 +6,7 @@ import { useState } from "react";
 function App() {
 
   const [people, setPeople] = useState(data);
-  console.log(people);
+  
 
   return (
     <section>
@@ -15,7 +15,7 @@ function App() {
           Prossimi incontri
         </h2>
         <div className="people-list">
-        <List data={people} />
+        <List data={people  } />
         </div>
         <div className="btn-group">
           <button className="btn btn-reset">Reload</button>
