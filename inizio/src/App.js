@@ -1,36 +1,22 @@
-import { useState } from "react";
-import List from "./List";
+import { useState, useEffect } from "react";
 import data from "./data";
+import Articolo from "./Articolo";  
 
+//Funzione che se presente 'Theme' nel localStorage
+// returna il suo valore o di default return 'light-mode'
 
 function App() {
-
-  const [people, setPeople] = useState(data);
-  
-  const reloadAllItems = () => {
-    setPeople(data);
-  } 
-  
-  const removeItem = (id) => {
-        setPeople((oldValue) => {
-          return oldValue.filter( (value) => value.id !== id);
-      }
-    );
-  }
-
   return (
-    <section>
+    <section className="section-center">
       <div className="container">
-        <h2 style={{color: "var(--bg-blue"}}>
-          Prossimi incontri
-        </h2>
-        <div className="people-list">
-        <List data={people} removeItem={removeItem} />
-        </div>
-        <div className="btn-group">
-          <button className="btn btn-reset" onClick={reloadAllItems}>Reload</button>
-          <button className="btn btn-delete" onClick={()=> setPeople([])}>Delete</button>
-        </div>
+        <button className="btn">
+          Cambia
+        </button>
+        <section className="article-section">
+          {
+            data.map(el => <Articolo key={el.id} {...el}/>)
+          }
+        </section>
       </div>
     </section>
   );
