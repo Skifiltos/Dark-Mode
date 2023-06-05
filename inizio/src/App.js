@@ -6,10 +6,27 @@ import Articolo from "./Articolo";
 // returna il suo valore o di default return 'light-mode'
 
 function App() {
+  const [theme, setTheme] = useState("light-mode");
+
+  // funzione che cambia tema a seconda del suo valore
+  const changeTheme = () => {
+    if (theme === "light-mode") {
+      setTheme("dark-mode");
+    }
+    else {
+      setTheme("light-mode");
+    }
+  }
+
+  // al mutare del theme state, attacca una classe al nostro HTML TAG
+  useEffect(() => {
+    document.documentElement.className = theme;
+  }, [theme]);
+
   return (
     <section className="section-center">
       <div className="container">
-        <button className="btn">
+        <button className="btn" onClick={changeTheme}>
           Cambia
         </button>
         <section className="article-section">
