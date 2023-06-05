@@ -17,7 +17,8 @@ const getFromLocalStorage = () => {
 // returna il suo valore o di default return 'light-mode'
 
 function App() {
-  const [theme, setTheme] = useState(getFromLocalStorage());
+  // nel caso il localStorage venga svuotato ho comunque il valore di default
+  const [theme, setTheme] = useState(getFromLocalStorage() || "light-mode");
 
   // funzione che cambia tema a seconda del suo valore
   const changeTheme = () => {
